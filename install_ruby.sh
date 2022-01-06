@@ -1,3 +1,3 @@
 #!/bin/bash
 apt update -y
-apt install -y ruby-full ruby-bundler build-essential
+apt install -y apt-transport-https ca-certificates ruby-full ruby-bundler build-essential mongodb-org git
