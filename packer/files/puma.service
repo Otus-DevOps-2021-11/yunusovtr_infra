@@ -1,0 +1,15 @@
+[Unit]
+Description=Puma HTTP server with Reddit site
+
+[Service]
+WorkingDirectory=/reddit
+ExecStart=/usr/local/bin/puma
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=reddit
+User=root
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+[Install]
+WantedBy=multi-user.target
