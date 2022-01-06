@@ -2,7 +2,7 @@
 yunusovtr Infra repository
 
 ## Домашняя работа cloud-testapp
-testapp_IP = 62.84.127.24
+testapp_IP = 51.250.7.57
 testapp_port = 9292
 
 ## Startup script
