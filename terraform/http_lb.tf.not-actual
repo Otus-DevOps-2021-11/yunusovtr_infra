@@ -1,0 +1,84 @@
+resource "yandex_alb_load_balancer" "load-balancer" {
+  name        = "reddit-app-balancer"
+
+  network_id  = var.network_id
+
+  allocation_policy {
+    location {
+      zone_id   = var.zone
+      subnet_id = var.subnet_id
+    }
+  }
+
+  listener {
+    name = "reddit-app-listener"
+    endpoint {
+      address {
+        external_ipv4_address {
+        }
+      }
+      ports = [ 80 ]
+    }
+    http {
+      handler {
+        http_router_id = yandex_alb_http_router.router.id
+      }
+    }
+  }
+}
+
+resource "yandex_alb_http_router" "router" {
+  name      = "reddit-app-http-router"
+  labels = {
+    tf-label    = "tf-label-value"
+    #empty-label = ""s
+  }
+}
+
+resource "yandex_alb_virtual_host" "vhost" {
+  name      = "reddit-app-virtual-host"
+  http_router_id = yandex_alb_http_router.router.id
+  route {
+    name = "reddit-app-route"
+    http_route {
+      http_route_action {
+        backend_group_id = yandex_alb_backend_group.reddit-app-backend-group.id
+        timeout = "3s"
+      }
+    }
+  }
+}
+
+resource "yandex_alb_backend_group" "reddit-app-backend-group" {
+  name      = "reddit-app-backend-group"
+
+  http_backend {
+    name = "reddit-app-http-backend"
+    weight = 1
+    port = 9292
+    target_group_ids = [yandex_alb_target_group.reddit-app-target-group.id]
+    # tls {
+    #   sni = "backend-domain.internal"
+    # }
+    # load_balancing_config {
+    #   panic_threshold = 50
+    # }
+    healthcheck {
+      timeout = "1s"
+      interval = "1s"
+      http_healthcheck {
+        path  = "/"
+      }
+    }
+    # http2 = "true"
+  }
+}
+
+resource "yandex_alb_target_group" "reddit-app-target-group" {
+  name      = "reddit-app-target-group"
+
+  target {
+    subnet_id = var.subnet_id
+    address   = yandex_compute_instance.app.network_interface.0.nat_ip_address
+  }
+}

@@ -60,3 +60,4 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Определены input переменные: private_key_path, vm_zone
  - Отформатированы все файлы через terraform fmt
  - Создан файл terraform.tfvars.example
+ - *Создан файл lb.tf с описанием сетевого балансировщика. В задании был указан HTTP балансировщик, но оказалось, что указанные для выполнения версии Terraform и Yandex провайдера не поддерживают L7-балансировщики из коробки, поэтому для упрощения в рамках задания был использован сетевой балансировщик от Yandex-облака.
