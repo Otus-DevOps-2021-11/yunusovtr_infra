@@ -52,3 +52,11 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Для создания образа без деплоя приложения запустить команду packer cd packer && build -var-file=./variables.json ./ubuntu16.json
  - Для создания образа с деплоем приложения через systemd юнит запустить команду cd packer && packer build -var-file=./variables.json ./immutable.json
  - Для создания ВМ с образом с деплоем приложения запустить скрипт config-scripts/create-reddit-vm.sh
+
+## Домашняя работа №8: Практика IaC с использованием Terraform
+
+### Что сделано
+ - Создана конфигурация файлов для создания ВМ с базовым образом из предыдущего задания и деплоем приложения через Terraform в соответствии с методичкой
+ - Определены input переменные: private_key_path, vm_zone
+ - Отформатированы все файлы через terraform fmt
+ - Создан файл terraform.tfvars.example
