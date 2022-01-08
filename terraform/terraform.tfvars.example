@@ -7,3 +7,4 @@ public_key_path = "~/.ssh/ubuntu.pub"
 private_key_path = "~/.ssh/ubuntu"
 subnet_id = "e9bem33uhju28r5i7pnu"
 token = "LGIHhLKHKhLKJH-hKHKJjhKLJJHKJjh"
+instance_count = 2
