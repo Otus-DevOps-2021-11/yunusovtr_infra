@@ -1,7 +1,7 @@
 resource "yandex_compute_instance" "app" {
   count = var.instance_count
 
-  name = "reddit-app${count.index}"
+  name = "${var.environment}-reddit-app${count.index}"
   zone = var.vm_zone
 
   resources {
