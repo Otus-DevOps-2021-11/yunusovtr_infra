@@ -71,3 +71,4 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Добавлен модуль vpc, т.к. увидел, что тесты его требуют, хотя методичка по этому поводу неполная. Добавлены параметры cidr для задания адреса локальной сети. Также добавлены и во входные переменные.
  - Файлы отформатированы terraform fmt.
  - Запуск проверен: одновременно создаются ресурсы из обоих окружений, а каждое окружение в своей сети и подсети.
+ - !!! Тест на валидацию некоректен. "Command: `cd terraform && terraform init -backend=false && terraform validate -var-file=terraform.tfvars.example` stdout should match "Terraform has been successfully initialized!" должно соответствовать что-то типа "Success! The configuration is valid."
