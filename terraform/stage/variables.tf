@@ -22,12 +22,6 @@ variable private_key_path {
   # Описание переменной
   description = "Path to the private key used for ssh access"
 }
-variable image_id {
-  description = "Disk image"
-}
-variable subnet_id {
-  description = "Subnet"
-}
 variable token {
   description = "token"
 }
@@ -42,6 +36,10 @@ variable app_disk_image {
 variable db_disk_image {
   description = "Disk image for reddit db"
   default     = "reddit-db-base"
+}
+variable cidr {
+  description = "Subnet"
+  default     = "192.168.10.0/24"
 }
 variable environment {
   description = "Environment for prefix"
