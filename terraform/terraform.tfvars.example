@@ -8,3 +8,5 @@ private_key_path = "~/.ssh/ubuntu"
 subnet_id = "e9bem33uhju28r5i7pnu"
 token = "LGIHhLKHKhLKJH-hKHKJjhKLJJHKJjh"
 instance_count = 2
+app_disk_image = "reddit-app-base"
+db_disk_image = "reddit-db-base"
