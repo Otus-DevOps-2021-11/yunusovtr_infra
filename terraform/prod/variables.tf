@@ -44,3 +44,7 @@ variable cidr {
 variable environment {
   description = "Environment for prefix"
 }
+variable provision {
+  description = "If true then created VMs will be provisioned by app and db"
+  default     = true
+}

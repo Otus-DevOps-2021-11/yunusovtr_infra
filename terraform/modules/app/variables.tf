@@ -16,12 +16,19 @@ variable subnet_id {
 }
 variable instance_count {
   description = "Count of application instances to create"
-  default = 1
+  default     = 1
 }
 variable app_disk_image {
   description = "Disk image for reddit app"
-  default = "reddit-app-base"
+  default     = "reddit-app-base"
 }
 variable environment {
   description = "Environment for prefix"
+}
+variable database_url {
+  description = "database_url"
+}
+variable provision {
+  description = "If true then created VM will be provisioned by app"
+  default     = true
 }

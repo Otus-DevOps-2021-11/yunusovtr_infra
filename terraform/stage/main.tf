@@ -12,6 +12,16 @@ module "vpc" {
   environment = var.environment
 }
 
+module "db" {
+  source           = "../modules/db"
+  public_key_path  = var.public_key_path
+  private_key_path = var.private_key_path
+  db_disk_image    = var.db_disk_image
+  subnet_id        = module.vpc.subnet_id
+  environment      = var.environment
+  provision        = var.provision
+}
+
 module "app" {
   source           = "../modules/app"
   vm_zone          = var.vm_zone
@@ -21,12 +31,6 @@ module "app" {
   subnet_id        = module.vpc.subnet_id
   instance_count   = var.instance_count
   environment      = var.environment
-}
-
-module "db" {
-  source          = "../modules/db"
-  public_key_path = var.public_key_path
-  db_disk_image   = var.db_disk_image
-  subnet_id       = module.vpc.subnet_id
-  environment     = var.environment
+  database_url     = module.db.external_ip_address_db
+  provision        = var.provision
 }

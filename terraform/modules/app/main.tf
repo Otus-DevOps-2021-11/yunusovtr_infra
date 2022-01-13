@@ -1,3 +1,10 @@
+data "template_file" "puma_unit" {
+  template = "${file("${path.module}/files/puma.service")}"
+  vars = {
+    database_url = "${var.database_url}"
+  }
+}
+
 resource "yandex_compute_instance" "app" {
   count = var.instance_count
 
@@ -18,28 +25,32 @@ resource "yandex_compute_instance" "app" {
 
   network_interface {
     subnet_id = var.subnet_id
-    nat = true
+    nat       = true
   }
 
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
+}
 
-#   connection {
-#     type  = "ssh"
-#     host  = self.network_interface.0.nat_ip_address
-#     user  = "ubuntu"
-#     agent = false
-#     # путь до приватного ключа
-#     private_key = file(var.private_key_path)
-#   }
+resource "null_resource" "conditional_provisioner" {
+  for_each = var.provision ? { for app in yandex_compute_instance.app.* : app.name => app } : {}
 
-#   provisioner "file" {
-#     source      = "files/puma.service"
-#     destination = "/tmp/puma.service"
-#   }
+  connection {
+    type  = "ssh"
+    host  = each.value.network_interface.0.nat_ip_address
+    user  = "ubuntu"
+    agent = false
+    # путь до приватного ключа
+    private_key = file(var.private_key_path)
+  }
 
-#   provisioner "remote-exec" {
-#     script = "files/deploy.sh"
-#   }
+  provisioner "file" {
+    content     = data.template_file.puma_unit.rendered
+    destination = "/tmp/puma.service"
+  }
+
+  provisioner "remote-exec" {
+    script = "${path.module}/files/deploy.sh"
+  }
 }
