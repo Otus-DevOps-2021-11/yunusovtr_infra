@@ -1,7 +1,23 @@
-output "external_ip_address_app" {
-  value = yandex_compute_instance.app.*.network_interface.0.nat_ip_address
+output "access_key" {
+  value = yandex_iam_service_account_static_access_key.sa-static-key.access_key
 }
 
-output "external_ip_load_balancer" {
-  value = yandex_lb_network_load_balancer.reddit-app-network-lb.listener.*.external_address_spec[0].*.address[0]
+output "secret_key" {
+  value = yandex_iam_service_account_static_access_key.sa-static-key.secret_key
+}
+
+output "bucket" {
+  value = yandex_storage_bucket.states_bucket.bucket
+}
+
+# output "dynamodb_endpoint" {
+#   value = yandex_ydb_database_serverless.lock_database.document_api_endpoint
+# }
+
+output "region" {
+  value = "ru-central1"
+}
+
+output "endpoint" {
+  value = "storage.yandexcloud.net"
 }
