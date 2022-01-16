@@ -1,4 +1,5 @@
 {
+  "all": ["appserver", "dbserver"],
   "app": ["appserver"],
   "db": ["dbserver"],
   "_meta": {
