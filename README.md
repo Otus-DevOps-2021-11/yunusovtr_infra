@@ -91,5 +91,5 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Опробовано создание инвентори Ansible в форматах INI, YAML и JSON
  - Запускался простой плейбук по клонированию репозитория
  - Дан ответ на вопрос со слайда 32 о реакции плейбука на изменившееся окружение.
- - Созданы файл invenotory.json и простой bash-скрипт выводящий содержание этого файла inventory.sh
+ - Созданы файл inventory.json и простой bash-скрипт выводящий содержание этого файла inventory.sh
  - inventory.sh указан в ansible.cfg как инвентори
