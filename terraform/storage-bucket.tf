@@ -10,6 +10,9 @@ provider "yandex" {
 resource "yandex_iam_service_account" "sa" {
   folder_id = var.folder_id
   name      = "tf-service-account"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 // Grant permissions
@@ -17,6 +20,9 @@ resource "yandex_resourcemanager_folder_iam_member" "sa-editor" {
   folder_id = var.folder_id
   role      = "editor"
   member    = "serviceAccount:${yandex_iam_service_account.sa.id}"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 // Create Static Access Keys

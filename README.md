@@ -75,3 +75,8 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - * Создал базу данных в Yandex Database и затем добавил таблицу tflock командой aws dynamodb create-table --table-name tflock --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --endpoint "https://docapi.serverless.yandexcloud.net/ru-central1/b1g2700eddislgm2l4ea/etnmcpdpnv1mpfs3415r" (сначала настроил aws configure) для блокировок бакенда. Проверил из разных размещений - блокировка работает.
  - ** Настроил provisioner в модуле app - для настройки связи с БД использую настройку переменной окружения в юните systemd, а записываю его через data.template_file. Доступ со стороны БД открываю, прокидывая mongod.conf с прописанным разрешением для IP.
  - ** Настроил условный запуск provisioner в зависимости от переменной provision при помощи null_resource и for_each.
+
+
+## Домашняя работа №10: Управление конфигурацией. Основные DevOps инструменты. Знакомство с Ansible
+
+Ответ на вопрос со слайда 32: ответ после запуска плейбука для клонирования репозитория изменился на changed=1, т.к.  командой "ansible app -m command -a 'rm -rf ~/reddit'" мы удалили склонированный репозиторий и, соответственно, повторный запуск плейбука восстановил удаленный репозиторий, а это произведенное изменение, о чём он и сообщил в ответе.
