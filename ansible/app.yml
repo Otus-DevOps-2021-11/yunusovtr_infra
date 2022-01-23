@@ -1,9 +1,9 @@
 ---
 - name: Configure App
-  hosts: app
+  hosts: stage-reddit-app0
   become: true
   vars:
-    db_host: 192.168.11.12
+    db_host: 192.168.11.6
   tasks:
     - name: Add unit file for Puma
       copy:
