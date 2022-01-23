@@ -1,0 +1,6 @@
+plugin: yacloud_compute
+yacloud_token: AQAAAABbqI1lAATuwfS-GTMWwkQ3kUOznDqM7CQ
+yacloud_clouds:
+  - cloud-yunusov-tr
+yacloud_folders:
+  - infra

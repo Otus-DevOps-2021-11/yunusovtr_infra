@@ -98,3 +98,8 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
 
 ### Что сделано
  - Выполнена основная часть методички
+ - Т.к. плагин указанный в методичке более недоступен, то добавлен динамический инвентори к yandex_cloud на основе плагина по ссылке https://github.com/rodion-goritskov/yacloud_compute.
+   - Файл плагина: ansible/pluging/inventory/yacloud_compute.py.
+   - Документация по команде ansible-doc -t inventory yacloud_compute
+   - Установлена зависимость pip install yandexcloud
+   - как я понял, keyed_groups этим плагином не поддерживается и очень жаль :( очень простой этот плагин
