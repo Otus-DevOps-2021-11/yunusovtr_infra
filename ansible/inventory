@@ -1,4 +1,4 @@
 [app]
-appserver ansible_host=62.84.126.187
+stage-reddit-app0 ansible_host=62.84.126.187
 [db]
-dbserver ansible_host=62.84.124.198
+stage-reddit-db ansible_host=62.84.124.198
