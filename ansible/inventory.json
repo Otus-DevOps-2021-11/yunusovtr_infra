@@ -1,14 +1,14 @@
 {
   "all": ["appserver", "dbserver"],
-  "app": ["appserver"],
-  "db": ["dbserver"],
+  "stage-reddit-app0": ["appserver"],
+  "dstage-reddit-dbb": ["dbserver"],
   "_meta": {
     "hostvars": {
       "appserver": {
-        "ansible_host": "62.84.126.187"
+        "ansible_host": "62.84.115.146"
       },
       "dbserver": {
-        "ansible_host": "62.84.124.198"
+        "ansible_host": "62.84.119.7"
       }
     }
   }

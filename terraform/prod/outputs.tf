@@ -6,6 +6,10 @@ output "external_ip_address_db" {
   value = module.db.external_ip_address_db
 }
 
+output "internal_ip_address_db" {
+  value = module.db.internal_ip_address_db
+}
+
 # output "external_ip_load_balancer" {
 #   value = yandex_lb_network_load_balancer.reddit-app-network-lb.listener.*.external_address_spec[0].*.address[0]
 # }

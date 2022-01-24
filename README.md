@@ -93,3 +93,15 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Дан ответ на вопрос со слайда 32 о реакции плейбука на изменившееся окружение.
  - Созданы файл inventory.json и простой bash-скрипт выводящий содержание этого файла inventory.sh
  - inventory.sh указан в ansible.cfg как инвентори
+
+## Домашняя работа №11: Деплой и управление конфигурацией с Ansible
+
+### Что сделано
+ - Выполнена основная часть методички
+ - Т.к. плагин указанный в методичке более недоступен, то добавлен динамический инвентори к yandex_cloud на основе плагина по ссылке https://github.com/rodion-goritskov/yacloud_compute.
+   - Файл плагина: ansible/pluging/inventory/yacloud_compute.py.
+   - Файл инвентори: yacloud_compute.yml (token от Yandex Cloud зашифрован в ansible-vault)
+   - Документация по команде ansible-doc -t inventory yacloud_compute
+   - Установлена зависимость pip install yandexcloud
+   - как я понял, keyed_groups этим плагином не поддерживается и очень жаль :( очень простой этот плагин
+ - Изменён провижининг в пакере, скрипты переписаны в плейбуки, образы пересобраны, id образов прописаны в терраформе stage, окружение stage поднято, плейбук site.yml успешно деплоит, работа приложения проверена

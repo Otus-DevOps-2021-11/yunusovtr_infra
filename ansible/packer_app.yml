@@ -1,0 +1,15 @@
+---
+- name: install_ruby playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: apt update -y && apt install -y apt-transport-https ca-certificates ruby-full ruby-bundler build-essential git
+      apt:
+        update_cache: yes
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - ruby-full
+          - ruby-bundler
+          - build-essential
+          - git
