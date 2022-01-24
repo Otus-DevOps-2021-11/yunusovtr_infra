@@ -1,5 +1,5 @@
 - name: Deploy App
-  hosts: stage-reddit-app0
+  hosts: app
   tasks:
     - name: Fetch the latest version of application code
       git:

@@ -7,3 +7,4 @@ packer/variables.json
 *.retry
 __pycache__
 pass
+jdauphant.nginx

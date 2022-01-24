@@ -1,7 +1,7 @@
 {
   "all": ["appserver", "dbserver"],
-  "stage-reddit-app0": ["appserver"],
-  "dstage-reddit-dbb": ["dbserver"],
+  "app": ["appserver"],
+  "db": ["dbserver"],
   "_meta": {
     "hostvars": {
       "appserver": {
