@@ -6,4 +6,5 @@ packer/variables.json
 .terraform/
 *.retry
 __pycache__
-pass
+vault.key
+jdauphant.nginx
