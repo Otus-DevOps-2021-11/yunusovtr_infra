@@ -128,3 +128,7 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Задание со * по поводу nginx. Пришлось удалить упоминание переменных из Vagrantfile и создать каталог рядом с плейбуками с этими переменными для nginx, т.к. vagrant отказался принимать форму "nginx_sites" => {"default" => [.....]}, упорно утверждая, что nginx_sites - стринговый параметр и не имеет атрибута keys...
  - Развернул окружение molecule, выполнил тесты по методичке
  - Добавил тест test_mongo_port_listening, чтобы проверять в тесте слушается ли порт 27017
+ - Изменил плейбуки packer_app.yml и packer_db.yml для использования ролей.
+ - Изменил конфигурации packer для запуска провижининга с ипользованием ролей. Запуск сборки командами из корня репо
+  - packer build -var-file packer/variables.json packer/db.json
+  - packer build -var-file packer/variables.json packer/app.json
