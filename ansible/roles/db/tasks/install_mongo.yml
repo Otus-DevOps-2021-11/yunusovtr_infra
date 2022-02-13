@@ -1,5 +1,6 @@
 - name: Sleeping
-  shell: sleep 30
+  pause:
+    minutes: 1
   changed_when: False
   tags: install
 - name: Add APT key

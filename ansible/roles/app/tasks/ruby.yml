@@ -1,6 +1,7 @@
 ---
 - name: Sleeping
-  shell: sleep 30
+  pause:
+    minutes: 1
   changed_when: False
   tags: ruby
 - name: Install ruby and rubygems and required packages
