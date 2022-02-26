@@ -19,9 +19,7 @@ build_job:
   image: docker:latest
   services:
     - docker:dind
-  variables:
-    FF_NETWORK_PER_BUILD: 1
-  before_script: []
+  c
   script:
     - echo 'Building'
     - cd reddit
@@ -49,6 +47,10 @@ deploy_dev_job:
 
 branch review:
   stage: review
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script: []
   script:
     - echo "Deploy to $CI_ENVIRONMENT_SLUG"
     - docker rm -f reddit-$CI_COMMIT_REF_NAME
