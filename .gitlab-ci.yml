@@ -17,9 +17,11 @@ before_script:
 build_job:
   stage: build
   image: docker:latest
-  before_script: []
   services:
     - docker:dind
+  variables:
+    FF_NETWORK_PER_BUILD: 1
+  before_script: []
   script:
     - echo 'Building'
     - cd reddit
