@@ -19,7 +19,7 @@ build_job:
   image: docker:latest
   services:
     - docker:dind
-  c
+  before_script: []
   script:
     - echo 'Building'
     - cd reddit
