@@ -17,7 +17,7 @@ before_script:
 build_job:
   stage: build
   image: docker:latest
-  before_script:
+  before_script: null
   services:
     - docker:dind
   script:
