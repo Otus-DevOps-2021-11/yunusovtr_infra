@@ -23,7 +23,7 @@ build_job:
   script:
     - echo 'Building'
     - cd reddit
-    - docker build -t reddit-$CI_COMMIT_REF_NAME:CI_COMMIT_SHORT_SHA .
+    - docker build -t reddit-$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA .
 
 test_unit_job:
   stage: test
@@ -54,7 +54,7 @@ branch review:
   script:
     - echo "Deploy to $CI_ENVIRONMENT_SLUG"
     - docker rm -f reddit-$CI_COMMIT_REF_NAME
-    - docker run --rm -d --name reddit-$CI_COMMIT_REF_NAME -p 9292 reddit-$CI_COMMIT_REF_NAME:CI_COMMIT_SHORT_SHA
+    - docker run --rm -d --name reddit-$CI_COMMIT_REF_NAME -p 9292 reddit-$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
   environment:
     name: branch/$CI_COMMIT_REF_NAME
     url: http://$CI_ENVIRONMENT_SLUG.example.com
