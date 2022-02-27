@@ -28,7 +28,7 @@ build_job:
 test_unit_job:
   stage: test
   services:
-    - mongo:4.2.18
+    - mongo:latest
   script:
     - ruby simpletest.rb
 
