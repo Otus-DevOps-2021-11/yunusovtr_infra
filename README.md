@@ -132,3 +132,9 @@ yc compute instance create --name reddit-app --hostname reddit-app --memory=4 --
  - Изменил конфигурации packer для запуска провижининга с ипользованием ролей. Запуск сборки командами из корня репо
   - packer build -var-file packer/variables.json packer/db.json
   - packer build -var-file packer/variables.json packer/app.json
+
+## Домашняя работа №20: Устройство Gitlab CI. Построение процесса непрерывной поставки
+
+### что сделано
+ - В результате выполнения методички настроили пайплайн для нескольких окружений
+ - Задание со *: в результате работы пайплайна собираем образ приложение и запускаем его в докере.
